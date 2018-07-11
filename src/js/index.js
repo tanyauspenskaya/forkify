@@ -41,11 +41,9 @@ const controlSearch = async () => {
       alert(`Error processing search results`);
       clearLoader();
     }
-
     
-  } else {
+  } 
 
-  }
 };
 
 elements.searchForm.addEventListener('submit', e => {
@@ -77,17 +75,18 @@ const controlRecipe = async () => {
 
     // Create new recipe object
     state.recipe = new Recipe(recipeID);
-    console.log(state.recipe);
 
     try {
       // Get recipe data
       await state.recipe.getRecipe();
+      state.recipe.parseIngredients();
+
       // Calculate servings and time
       state.recipe.calcTime();
       state.recipe.calcServings();
+      
       // Render recipe on UI
       clearLoader();
-      //console.log(state.recipe.title);
       recipeView.renderRecipe(state.recipe.title,state.recipe.img);
       console.log(state.recipe);
 
@@ -95,7 +94,6 @@ const controlRecipe = async () => {
       alert(`Error processing recipe`);
       clearLoader();
     }
-
     
   }
   
