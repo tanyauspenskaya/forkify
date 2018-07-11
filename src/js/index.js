@@ -87,7 +87,7 @@ const controlRecipe = async () => {
       
       // Render recipe on UI
       clearLoader();
-      recipeView.renderRecipe(state.recipe.title,state.recipe.img);
+      recipeView.renderRecipe(state.recipe);
       console.log(state.recipe);
 
     } catch(err) {
