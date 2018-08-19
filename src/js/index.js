@@ -91,7 +91,7 @@ const controlRecipe = async () => {
       // Render recipe on UI
       clearLoader();
       recipeView.renderRecipe(state.recipe);
-      console.log(state.recipe);
+      //console.log(state.recipe);
 
     } catch(err) {
       alert(`Error processing recipe`);
@@ -105,3 +105,16 @@ const controlRecipe = async () => {
 // window.addEventListener('hashchange', controlRecipe);
 // window.addEventListener('load', controlRecipe);
 ['hashchange','load'].forEach(e => window.addEventListener(e, controlRecipe));
+
+// Handling recipe button clicks
+elements.recipeViewBox.addEventListener('click', e => {
+  if(e.target.matches('.btn-decrease, .btn-decrease *')) {
+    if(state.recipe.servings > 1) {
+      state.recipe.updateServings('dec');
+      recipeView.updateServingsIngredients(state.recipe);
+    }
+  } else if(e.target.matches('.btn-increase, .btn-increase *')) {
+    state.recipe.updateServings('inc');
+    recipeView.updateServingsIngredients(state.recipe);
+  }
+});
