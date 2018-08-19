@@ -8,7 +8,7 @@ export default class Likes {
       id,
       title,
       author,
-      image
+      img
     }
 
     this.likes.push(like);
