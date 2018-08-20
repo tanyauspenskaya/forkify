@@ -15,10 +15,10 @@ export const highlightSelected = id => {
   resultsArr.forEach(el => {
     el.classList.remove('results__link--active');
   });
-  document.querySelector(`a[href*="#${id}"]`).classList.add('results__link--active');
+  document.querySelector(`.results__link[href*="#${id}"]`).classList.add('results__link--active');
 };
 
-const limitRecipeTitle = (title, limit = 19) => {
+export const limitRecipeTitle = (title, limit = 19) => {
   if(title.length > limit) {
     let newTitle = title.substr(0, limit);
     newTitle = newTitle.substr(0, Math.min(newTitle.length, newTitle.lastIndexOf(' ')));
