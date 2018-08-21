@@ -17,16 +17,12 @@ import {elements, renderLoader, clearLoader} from './views/base';
  */
 
 const state = {};
-window.state = state;
-
 
 /* SEARCH 
   CONTROLLER */ 
-
 const controlSearch = async () => {
   // 1) get query from view
   const query = searchView.getInput(); 
-  //console.log(query);
   
   if(query) {
     // 2) new search object and add to state
@@ -41,7 +37,6 @@ const controlSearch = async () => {
       // 4) search for recipes
       await state.search.getResults();
       // 5) render results on UI
-      //console.log(state.search.result);
       clearLoader();
       searchView.renderResults(state.search.result);
 
@@ -73,7 +68,6 @@ elements.searchResPages.addEventListener('click', e => {
 
 /* RECIPE 
   CONTROLLER */ 
-
 const controlRecipe = async () => {
   // get ID from url
   const recipeID = window.location.hash.replace('#','');
@@ -104,7 +98,6 @@ const controlRecipe = async () => {
         state.recipe,
         state.likes.isLiked(recipeID)
       );
-      //console.log(state.recipe);
 
     } catch(err) {
       alert(`Error processing recipe`);
@@ -118,7 +111,6 @@ const controlRecipe = async () => {
 
 /* LIST 
   CONTROLLER */ 
-
 const controlList = () => {
   // Create a new list if there is none yet
   if(!state.list) state.list = new List();
@@ -149,7 +141,6 @@ elements.shoppingList.addEventListener('click', e => {
 
 /* LIKE 
   CONTROLLER */ 
-
 const controlLike = () => {
   if(!state.likes)  state.likes = new Likes();
   const currentID = state.recipe.id;
